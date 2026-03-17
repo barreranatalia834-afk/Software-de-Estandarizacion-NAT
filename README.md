@@ -14,3 +14,4 @@ De esta manera, la supervisora podrá tomar decisiones más precisas y organizar
 ![alt text](<Interfaz de programacion-1.png>)
 ![alt text](<Interfaz de tiempos-1.png>)
 ![alt text](<interfaz_de_regitro_de _maquina-1.png>)
+
