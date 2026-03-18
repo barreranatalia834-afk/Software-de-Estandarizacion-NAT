@@ -7,7 +7,7 @@ El sistema permitirá:
 •	Mejorar la planificación semanal.
 •	Reducir errores en la programación.
 De esta manera, la supervisora podrá tomar decisiones más precisas y organizar los turnos de forma más práctica y eficiente
-
+ <h1>mokaps de login </h1>
 ![alt text](<Interfaz de login.png>)
  ![alt text](<Interfaz de panel de control.png>)
   ![alt text](<Interfaz de programacion.png>) 
