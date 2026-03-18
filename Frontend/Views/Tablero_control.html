@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NAT Software - Consulta y Tablero (RF004)</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1754cf",
+                        "background-light": "#f8fafc",
+                        "background-dark": "#0f172a",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body class="bg-background-light text-slate-900 font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<div class="layout-container flex h-screen w-full overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="flex flex-col w-64 bg-white border-r border-slate-200 h-full">
+<div class="p-6">
+<div class="flex items-center gap-3 text-primary">
+<div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined">factory</span>
+</div>
+<h2 class="text-slate-900 text-xl font-bold leading-tight tracking-tight">NAT Software</h2>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-1 overflow-y-auto">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 hover:text-primary hover:bg-slate-50 rounded-lg text-sm font-semibold transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">settings_suggest</span>
+<span>Registro de Máquinas</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 hover:text-primary hover:bg-slate-50 rounded-lg text-sm font-semibold transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">timer</span>
+<span>Tiempos Estándar</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 hover:text-primary hover:bg-slate-50 rounded-lg text-sm font-semibold transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">calendar_view_week</span>
+<span>Programación Semanal</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 bg-blue-50 text-primary rounded-lg text-sm font-bold transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">dashboard</span>
+<span>Tablero de Control</span>
+</a>
+</nav>
+<!-- Admin Profile Footer Section -->
+<div class="mt-auto border-t border-slate-100 p-4">
+<div class="flex items-center gap-3 p-2 rounded-xl hover:bg-slate-50 transition-colors cursor-pointer">
+<div class="bg-slate-200 rounded-full size-10 border-2 border-primary overflow-hidden" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCdS_5sPfIdFCZ7npEjIwHRvRfiMejWGEQVf9MdvaTkcLNjI3uVw95uVYKvn5RERSxHjS2h1OauhBaG8_rqeKTql90K9IMqKMC6zENgTGp-QBVv0cF-N94BRrVh50EeedGvK1agqTEXGq0x8z6saBHBIOcHfx6F8UtEhqVJmdI9EmapVvwdgKGP1AQdPkZkuglyhM2O3b62m4LRkR3-yi5He0260JlicwY6yAsguKG5WHtav_CV-fm_VZ21mMJqDHKoxJsbb5aKLHE"); background-size: cover;'></div>
+<div class="flex flex-col min-w-0">
+<span class="text-sm font-bold text-slate-900 truncate">Admin NAT</span>
+<span class="text-xs text-slate-500 truncate">admin@natsoftware.com</span>
+</div>
+<span class="material-symbols-outlined text-slate-400 ml-auto text-sm">more_vert</span>
+</div>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<div class="flex flex-col flex-1 min-w-0 h-full overflow-y-auto bg-background-light">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-slate-200 px-6 py-4 bg-white sticky top-0 z-50 h-16">
+<div class="flex flex-1 justify-end gap-4 items-center">
+<label class="hidden sm:flex flex-col min-w-40 h-10 max-w-xs relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+<span class="material-symbols-outlined text-sm">search</span>
+</div>
+<input class="form-input block w-full pl-10 pr-3 py-2 border border-slate-200 bg-slate-50 rounded-lg text-sm placeholder-slate-500 focus:ring-2 focus:ring-primary focus:bg-white transition-all" placeholder="Buscar consultas históricas..." type="text"/>
+</label>
+<button class="p-2 text-slate-500 hover:bg-slate-100 rounded-full transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-rose-500 rounded-full border-2 border-white"></span>
+</button>
+<div class="flex items-center gap-0 ml-2 border-l border-slate-200 pl-4 h-full">
+<button class="w-10 h-10 flex items-center justify-center text-slate-400 hover:bg-slate-100 hover:text-slate-600 transition-colors rounded-lg">
+<span class="material-symbols-outlined text-lg">minimize</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center text-slate-400 hover:bg-slate-100 hover:text-slate-600 transition-colors rounded-lg">
+<span class="material-symbols-outlined text-lg">check_box_outline_blank</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center text-slate-400 hover:bg-rose-500 hover:text-white transition-colors rounded-lg">
+<span class="material-symbols-outlined text-lg">close</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-1 px-4 py-8 md:px-10 max-w-7xl w-full mx-auto"><!-- Page Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+<div class="flex flex-col gap-1">
+<h1 class="text-slate-900 text-3xl font-extrabold tracking-tight">Tablero de Control</h1>
+<p class="text-slate-500 text-base font-medium">RF004: Consulta de Información y Métricas de Producción</p>
+</div>
+<div class="flex gap-3">
+<button class="inline-flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 text-slate-700 rounded-lg font-semibold text-sm hover:bg-slate-50 transition-colors shadow-sm">
+<span class="material-symbols-outlined text-lg">calendar_month</span>
+<span>Últimos 7 días</span>
+</button>
+<button class="inline-flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg font-semibold text-sm hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-lg">download</span>
+<span>Exportar Reporte</span>
+</button>
+</div>
+</div>
+<!-- Key Metrics Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+<div class="flex flex-col gap-3 rounded-2xl p-6 bg-white border border-slate-200 shadow-sm transition-all hover:shadow-md">
+<div class="flex justify-between items-start">
+<span class="p-2 bg-blue-50 text-primary rounded-lg"><span class="material-symbols-outlined">trending_up</span></span>
+<span class="text-emerald-600 text-xs font-bold bg-emerald-50 px-2 py-1 rounded-full">+2.4%</span>
+</div>
+<p class="text-slate-500 text-xs font-bold uppercase tracking-wider">Eficiencia</p>
+<p class="text-slate-900 text-3xl font-black">94.2%</p>
+</div>
+<div class="flex flex-col gap-3 rounded-2xl p-6 bg-white border border-slate-200 shadow-sm transition-all hover:shadow-md">
+<div class="flex justify-between items-start">
+<span class="p-2 bg-orange-50 text-orange-600 rounded-lg"><span class="material-symbols-outlined">error</span></span>
+<span class="text-emerald-600 text-xs font-bold bg-emerald-50 px-2 py-1 rounded-full">-12%</span>
+</div>
+<p class="text-slate-500 text-xs font-bold uppercase tracking-wider">Errores Reducidos</p>
+<p class="text-slate-900 text-3xl font-black">12.5%</p>
+</div>
+<div class="flex flex-col gap-3 rounded-2xl p-6 bg-white border border-slate-200 shadow-sm transition-all hover:shadow-md">
+<div class="flex justify-between items-start">
+<span class="p-2 bg-indigo-50 text-indigo-600 rounded-lg"><span class="material-symbols-outlined">assignment_turned_in</span></span>
+<span class="text-slate-500 text-xs font-bold bg-slate-100 px-2 py-1 rounded-full">Meta: 98%</span>
+</div>
+<p class="text-slate-500 text-xs font-bold uppercase tracking-wider">Cumplimiento</p>
+<p class="text-slate-900 text-3xl font-black">96.8%</p>
+</div>
+<div class="flex flex-col gap-3 rounded-2xl p-6 bg-white border border-slate-200 shadow-sm transition-all hover:shadow-md">
+<div class="flex justify-between items-start">
+<span class="p-2 bg-blue-50 text-primary rounded-lg"><span class="material-symbols-outlined">schedule</span></span>
+<span class="text-rose-600 text-xs font-bold bg-rose-50 px-2 py-1 rounded-full">+0.8h</span>
+</div>
+<p class="text-slate-500 text-xs font-bold uppercase tracking-wider">Tiempo Promedio</p>
+<p class="text-slate-900 text-3xl font-black">42.5m</p>
+</div>
+</div>
+<!-- Charts Section -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+<!-- Efficiency Trend Chart -->
+<div class="flex flex-col gap-6 rounded-2xl p-6 bg-white border border-slate-200 shadow-sm">
+<div class="flex flex-col gap-1">
+<h3 class="text-slate-900 text-lg font-bold">Tendencia de Eficiencia Semanal</h3>
+<p class="text-slate-500 text-sm">Visualización del rendimiento diario de producción</p>
+</div>
+<div class="flex flex-col gap-4">
+<div class="relative h-[240px] w-full">
+<svg class="h-full w-full" fill="none" preserveaspectratio="none" viewbox="0 0 478 150" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 109C18.1538 109 18.1538 21 36.3077 21C54.4615 21 54.4615 41 72.6154 41C90.7692 41 90.7692 93 108.923 93C127.077 93 127.077 33 145.231 33C163.385 33 163.385 101 181.538 101C199.692 101 199.692 61 217.846 61C236 61 236 45 254.154 45C272.308 45 272.308 121 290.462 121C308.615 121 308.615 149 326.769 149C344.923 149 344.923 1 363.077 1C381.231 1 381.231 81 399.385 81C417.538 81 417.538 129 435.692 129C453.846 129 453.846 25 472 25V149H0V109Z" fill="url(#chartGradient)"></path>
+<path d="M0 109C18.1538 109 18.1538 21 36.3077 21C54.4615 21 54.4615 41 72.6154 41C90.7692 41 90.7692 93 108.923 93C127.077 93 127.077 33 145.231 33C163.385 33 163.385 101 181.538 101C199.692 101 199.692 61 217.846 61C236 61 236 45 254.154 45C272.308 45 272.308 121 290.462 121C308.615 121 308.615 149 326.769 149C344.923 149 344.923 1 363.077 1C381.231 1 381.231 81 399.385 81C417.538 81 417.538 129 435.692 129C453.846 129 453.846 25 472 25" stroke="#1754cf" stroke-linecap="round" stroke-width="3"></path>
+<defs>
+<lineargradient gradientunits="userSpaceOnUse" id="chartGradient" x1="236" x2="236" y1="1" y2="149">
+<stop stop-color="#1754cf" stop-opacity="0.15"></stop>
+<stop offset="1" stop-color="#1754cf" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+</svg>
+</div>
+<div class="flex justify-between px-2">
+<span class="text-slate-400 text-[10px] font-bold uppercase tracking-wider">Lun</span>
+<span class="text-slate-400 text-[10px] font-bold uppercase tracking-wider">Mar</span>
+<span class="text-slate-400 text-[10px] font-bold uppercase tracking-wider">Mie</span>
+<span class="text-slate-400 text-[10px] font-bold uppercase tracking-wider">Jue</span>
+<span class="text-slate-400 text-[10px] font-bold uppercase tracking-wider">Vie</span>
+<span class="text-slate-400 text-[10px] font-bold uppercase tracking-wider">Sab</span>
+<span class="text-slate-400 text-[10px] font-bold uppercase tracking-wider">Dom</span>
+</div>
+</div>
+</div>
+<!-- Errors by Department -->
+<div class="flex flex-col gap-6 rounded-2xl p-6 bg-white border border-slate-200 shadow-sm">
+<div class="flex flex-col gap-1">
+<h3 class="text-slate-900 text-lg font-bold">Incidencias por Departamento</h3>
+<p class="text-slate-500 text-sm">Distribución de errores detectados por área</p>
+</div>
+<div class="grid grid-cols-4 gap-4 items-end h-[240px] px-4">
+<div class="flex flex-col gap-3 items-center w-full">
+<div class="bg-primary/10 hover:bg-primary/20 w-full rounded-t-lg transition-all" style="height: 120px;"></div>
+<span class="text-slate-500 text-[10px] font-bold uppercase truncate w-full text-center">Corte</span>
+</div>
+<div class="flex flex-col gap-3 items-center w-full">
+<div class="bg-primary/30 hover:bg-primary/40 w-full rounded-t-lg transition-all" style="height: 60px;"></div>
+<span class="text-slate-500 text-[10px] font-bold uppercase truncate w-full text-center">Ensamble</span>
+</div>
+<div class="flex flex-col gap-3 items-center w-full">
+<div class="bg-primary/60 hover:bg-primary/70 w-full rounded-t-lg transition-all" style="height: 180px;"></div>
+<span class="text-slate-500 text-[10px] font-bold uppercase truncate w-full text-center">Pintura</span>
+</div>
+<div class="flex flex-col gap-3 items-center w-full">
+<div class="bg-primary hover:bg-primary/90 w-full rounded-t-lg transition-all shadow-md shadow-primary/10" style="height: 210px;"></div>
+<span class="text-slate-500 text-[10px] font-bold uppercase truncate w-full text-center">Calidad</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Queries & Activity -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Historical Query List -->
+<div class="lg:col-span-2 flex flex-col gap-6 rounded-2xl p-6 bg-white border border-slate-200 shadow-sm">
+<div class="flex items-center justify-between">
+<h3 class="text-slate-900 text-lg font-bold">Consultas Recientes</h3>
+<a class="text-primary text-sm font-semibold hover:underline" href="#">Ver todo el historial</a>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="border-b border-slate-100">
+<tr>
+<th class="py-3 px-2 text-slate-400 text-[10px] font-bold uppercase tracking-wider">ID Reporte</th>
+<th class="py-3 px-2 text-slate-400 text-[10px] font-bold uppercase tracking-wider">Fecha</th>
+<th class="py-3 px-2 text-slate-400 text-[10px] font-bold uppercase tracking-wider">Usuario</th>
+<th class="py-3 px-2 text-slate-400 text-[10px] font-bold uppercase tracking-wider">Estado</th>
+<th class="py-3 px-2"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-50">
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="py-4 px-2 font-semibold text-slate-900">#REP-2024-001</td>
+<td class="py-4 px-2 text-slate-600 text-sm">24 Oct, 2023</td>
+<td class="py-4 px-2 text-slate-600 text-sm">Carlos Ruiz</td>
+<td class="py-4 px-2">
+<span class="px-2.5 py-1 bg-emerald-100 text-emerald-700 text-[10px] font-bold uppercase rounded-full">Completado</span>
+</td>
+<td class="py-4 px-2 text-right">
+<button class="text-slate-400 hover:text-primary transition-colors"><span class="material-symbols-outlined">visibility</span></button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="py-4 px-2 font-semibold text-slate-900">#REP-2024-002</td>
+<td class="py-4 px-2 text-slate-600 text-sm">23 Oct, 2023</td>
+<td class="py-4 px-2 text-slate-600 text-sm">Ana Morales</td>
+<td class="py-4 px-2">
+<span class="px-2.5 py-1 bg-amber-100 text-amber-700 text-[10px] font-bold uppercase rounded-full">Pendiente</span>
+</td>
+<td class="py-4 px-2 text-right">
+<button class="text-slate-400 hover:text-primary transition-colors"><span class="material-symbols-outlined">visibility</span></button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="py-4 px-2 font-semibold text-slate-900">#REP-2024-003</td>
+<td class="py-4 px-2 text-slate-600 text-sm">22 Oct, 2023</td>
+<td class="py-4 px-2 text-slate-600 text-sm">Juan Pérez</td>
+<td class="py-4 px-2">
+<span class="px-2.5 py-1 bg-emerald-100 text-emerald-700 text-[10px] font-bold uppercase rounded-full">Completado</span>
+</td>
+<td class="py-4 px-2 text-right">
+<button class="text-slate-400 hover:text-primary transition-colors"><span class="material-symbols-outlined">visibility</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Planning Reports Quick Access -->
+<div class="flex flex-col gap-6 rounded-2xl p-6 bg-primary border border-transparent shadow-xl shadow-primary/20 text-white">
+<div class="flex flex-col gap-2">
+<h3 class="text-white text-lg font-bold">Reportes de Planificación</h3>
+<p class="text-white/80 text-sm leading-relaxed">Acceso rápido a las proyecciones de producción mensual.</p>
+</div>
+<div class="flex flex-col gap-3">
+<button class="flex items-center justify-between w-full p-3.5 bg-white/10 hover:bg-white/20 rounded-xl transition-all group">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined">description</span>
+<span class="text-sm font-semibold">Q4 Planificación.pdf</span>
+</div>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<button class="flex items-center justify-between w-full p-3.5 bg-white/10 hover:bg-white/20 rounded-xl transition-all group">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-sm font-semibold">Proyecciones Nov.xlsx</span>
+</div>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<button class="flex items-center justify-between w-full p-3.5 bg-white/10 hover:bg-white/20 rounded-xl transition-all group">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined">folder_shared</span>
+<span class="text-sm font-semibold">Recursos Humanos.pdf</span>
+</div>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+<div class="mt-auto pt-4 border-t border-white/10">
+<p class="text-white/60 text-[11px] font-medium leading-tight italic">Actualizado hace 2 horas por Sistema Centralizado NAT</p>
+</div>
+</div>
+</div></main>
+<!-- Footer Section -->
+<footer class="px-6 py-8 bg-white border-t border-slate-200">
+<div class="flex flex-col md:flex-row justify-between items-center gap-4 text-slate-500 text-sm">
+<p class="font-medium">© 2024 NAT Software. Todos los derechos reservados.</p>
+<div class="flex gap-8">
+<a class="hover:text-primary transition-colors font-medium" href="#">Términos</a>
+<a class="hover:text-primary transition-colors font-medium" href="#">Privacidad</a>
+<a class="hover:text-primary transition-colors font-medium" href="#">Soporte Técnico</a>
+</div>
+</div>
+</footer>
+</div>
+</div>
+</div>
+</body></html>
