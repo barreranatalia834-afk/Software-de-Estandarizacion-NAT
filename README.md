@@ -27,34 +27,34 @@ De esta manera, la supervisora podrá tomar decisiones más precisas y organizar
   ![alt text](<interfaz_de_regitro_de _maquina.png>)
 
 
-    <h1> Tabla: USUARIOS
-id: INT – Identificador único (PK, Identity)
-nombre: VARCHAR(50) – Nombre del usuario
-usuario: VARCHAR(50) – Usuario de acceso (Unique, Not Null)
-contraseña: INT – Contraseña del usuario (Not Null)
+    Tabla: USUARIOS
+id: INT – Identificador único (PK, Identity)<br>
+nombre: VARCHAR(50) – Nombre del usuario<br>
+usuario: VARCHAR(50) – Usuario de acceso (Unique, Not Null)<br>
+contraseña: INT – Contraseña del usuario (Not Null)<br>
 rol: VARCHAR(50) – Rol del usuario</h1>
 
     Tabla: MAQUINAS
-id: INT – Identificador de la máquina (PK, Identity)
-nombre: VARCHAR(50) – Nombre de la máquina
-estado: VARCHAR(50) – Estado de la máquina
+id: INT – Identificador de la máquina (PK, Identity)<br>
+nombre: VARCHAR(50) – Nombre de la máquina<br>
+estado: VARCHAR(50) – Estado de la máquina<br>
 descripcion: VARCHAR(50) – Descripción </h1>
 
     Tabla: TIEMPOS
-id: INT – Identificador (PK, Identity)
-id_maquina: INT – Relación con MAQUINAS (FK)
+id: INT – Identificador (PK, Identity)<br>
+id_maquina: INT – Relación con MAQUINAS (FK)<br>
 tiempo_por_minuto: DECIMAL(10,2) – Tiempo de producción </h1>
 
 
     Tabla: PROGRAMACION
-id_programacion: INT – Identificador (PK, Identity)
-id_maquina: INT – Relación con MAQUINAS (FK)
-cantidad: INT – Cantidad de producción
+id_programacion: INT – Identificador (PK, Identity)<br>
+id_maquina: INT – Relación con MAQUINAS (FK)<br>
+cantidad: INT – Cantidad de producción<br>
 fecha: DATE – Fecha de programación </h1>
 
     Tabla: RESULTADOS_PRODUCCION
-id_resultado: INT – Identificador (PK, Identity)
-id_programacion: INT – Relación con PROGRAMACION (FK)
+id_resultado: INT – Identificador (PK, Identity)<br>
+id_programacion: INT – Relación con PROGRAMACION (FK)<br>
 tiempo_total: DECIMAL(10,2) – Tiempo total calcul</h1>
 
 <h1>MAQUINAS (1) → TIEMPOS (N)
