@@ -26,6 +26,8 @@ De esta manera, la supervisora podrá tomar decisiones más precisas y organizar
 
   ![alt text](<interfaz_de_regitro_de _maquina.png>)
 
+  <h1>DICCIONARIO DE DATOS </h1>
+
 
     Tabla: USUARIOS
 id: INT – Identificador único (PK, Identity)<br>
