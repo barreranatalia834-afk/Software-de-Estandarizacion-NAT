@@ -34,25 +34,25 @@ usuario: VARCHAR(50) – Usuario de acceso (Unique, Not Null)
 contraseña: INT – Contraseña del usuario (Not Null)
 rol: VARCHAR(50) – Rol del usuario</h1>
 
-    <h1>Tabla: MAQUINAS
+    Tabla: MAQUINAS
 id: INT – Identificador de la máquina (PK, Identity)
 nombre: VARCHAR(50) – Nombre de la máquina
 estado: VARCHAR(50) – Estado de la máquina
 descripcion: VARCHAR(50) – Descripción </h1>
 
-    <h1>Tabla: TIEMPOS
+    Tabla: TIEMPOS
 id: INT – Identificador (PK, Identity)
 id_maquina: INT – Relación con MAQUINAS (FK)
 tiempo_por_minuto: DECIMAL(10,2) – Tiempo de producción </h1>
 
 
-    <h1>Tabla: PROGRAMACION
+    Tabla: PROGRAMACION
 id_programacion: INT – Identificador (PK, Identity)
 id_maquina: INT – Relación con MAQUINAS (FK)
 cantidad: INT – Cantidad de producción
 fecha: DATE – Fecha de programación </h1>
 
-    <h1> Tabla: RESULTADOS_PRODUCCION
+    Tabla: RESULTADOS_PRODUCCION
 id_resultado: INT – Identificador (PK, Identity)
 id_programacion: INT – Relación con PROGRAMACION (FK)
 tiempo_total: DECIMAL(10,2) – Tiempo total calcul</h1>
